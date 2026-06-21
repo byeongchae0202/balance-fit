@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.balancefit.app.ui.AppRootTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-06-21T01:29:25" hostname="BOOK-OBO3B1C890" time="0.003">
+  <properties/>
+  <testcase name="appTitle_returnsBalanceFit" classname="com.balancefit.app.ui.AppRootTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
