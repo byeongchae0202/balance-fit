@@ -208,19 +208,14 @@ balance-fit/
 3. README.md 작성
 4. 기본 가이드 문서 작성 (getting-started, app-features, project-structure)
 5. 아키텍처 문서 작성 (sensor-data-processing, balance-calculation, calibration, azure-integration)
+6. features 문서 작성 (balance-display, calibration-feature, improvement-guide)
+7. testing 문서 작성 (testing-guide)
+8. .gitignore 파일 생성
+9. README 문서 링크/구성 정리 (라이선스/문의 섹션 생략)
+10. troubleshooting 문서 작성
 
 ### ⏳ 미완료 작업
-1. **features/ 폴더 문서**
-   - balance-display.md: UI 구현 가이드
-   - calibration-feature.md: 캘리브레이션 UI 구현
-   - improvement-guide.md: 개선 가이드 UI 구현
-
-2. **testing/ 폴더 문서**
-   - testing-guide.md: 앱 테스트 방법
-
-3. **기타**
-   - .gitignore 파일 생성
-   - 필요시 troubleshooting.md 추가
+- 현재 없음 (문서 작업 완료)
 
 ---
 
@@ -277,14 +272,17 @@ balance-fit/
 
 1. **현재 진행도 확인**
    - ✅ 문서 구조 설계 완료
-   - ⏳ features/ 문서 미완성
+   - ✅ features/ 문서 작성 완료
+   - ✅ testing-guide.md 작성 완료
+   - ✅ .gitignore 생성 완료
    - ⏳ 구현 시작 전
 
 2. **다음 작업**
-   - [ ] features/ 폴더 3개 문서 작성
-   - [ ] testing-guide.md 작성
-   - [ ] .gitignore 생성
-   - [ ] 모든 문서 검토 및 업데이트
+   - [x] features/ 폴더 3개 문서 작성
+   - [x] testing-guide.md 작성
+   - [x] .gitignore 생성
+   - [x] 모든 문서 검토 및 업데이트
+   - [x] troubleshooting.md 작성
    - [ ] writing-plans 스킬 호출 → 구현 계획 수립
 
 3. **참고 문서**
@@ -301,23 +299,31 @@ balance-fit/
 
 ## 파일 관리
 
-### 생성된 파일 현황 (2026-06-13)
+### 생성된 파일 현황 (2026-06-21)
 
 ```
 C:\dev\balance fit\
 ├── .git/
+├── .gitignore
 ├── README.md
 ├── docs/
 │   ├── getting-started.md
 │   ├── app-features.md
 │   ├── project-structure.md
+│   ├── features/
+│   │   ├── balance-display.md
+│   │   ├── calibration-feature.md
+│   │   └── improvement-guide.md
+│   ├── testing/
+│   │   └── testing-guide.md
+│   ├── troubleshooting.md
 │   └── architecture/
 │       ├── sensor-data-processing.md
 │       ├── balance-calculation.md
 │       ├── calibration.md
 │       └── azure-integration.md
 ├── copilot-instructions.md
-└── (features/, testing/ 폴더는 아직 파일 없음)
+└── (구현 코드 작성 전 문서 정리 단계)
 ```
 
 ### Git 커밋 현황
@@ -332,5 +338,5 @@ C:\dev\balance fit\
 ---
 
 **문서 작성일**: 2026-06-13 10:53 UTC+9  
-**마지막 수정**: 진행중  
-**상태**: 대기 중 (구현 단계 시작 대기)
+**마지막 수정**: 2026-06-21  
+**상태**: 문서 준비 완료 (구현 계획 수립 대기)

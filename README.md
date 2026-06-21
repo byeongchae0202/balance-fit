@@ -35,17 +35,10 @@
 - [시작 가이드](docs/getting-started.md) - 개발 환경 설정
 - [앱 기능 설명](docs/app-features.md) - 앱의 전반적인 기능 이해
 - [프로젝트 구조](docs/project-structure.md) - 코드 폴더 구성
+- [균형 상태 표시 기능](docs/features/balance-display.md) - 실시간 상태 UI 상세
+- [캘리브레이션 기능](docs/features/calibration-feature.md) - 캘리브레이션 플로우 상세
+- [균형 개선 가이드 기능](docs/features/improvement-guide.md) - 조정 안내 로직 상세
+- [테스트 가이드](docs/testing/testing-guide.md) - 검증 시나리오와 기준
+- [문제 해결 가이드](docs/troubleshooting.md) - 개발/테스트 이슈 대응
 
 더 자세한 문서는 [docs/](docs/) 폴더에서 확인할 수 있습니다.
-
----
-
-## 라이선스
-
-(라이선스 정보 - 추후 작성)
-
----
-
-## 문의
-
-(문의 방법 - 추후 작성)
