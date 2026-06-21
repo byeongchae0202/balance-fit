@@ -28,6 +28,16 @@
 
 개발을 시작하려면 [시작 가이드](docs/getting-started.md)를 참고하세요.
 
+### Android 스캐폴드 빌드 실행
+
+프로젝트 루트에서 아래 명령어를 실행하여 디버그 APK를 빌드합니다:
+
+```bat
+.\gradlew.bat assembleDebug
+```
+
+빌드 결과물은 `app/build/outputs/apk/debug/` 경로에 생성됩니다.
+
 ---
 
 ## 문서

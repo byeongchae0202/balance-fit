@@ -27,6 +27,45 @@
 
 ---
 
+## 로컬 설정
+
+로컬 환경에서 빌드하려면 아래 단계를 순서대로 완료하세요.
+
+### 1) JDK 17 설치
+
+- 📥 다운로드: [Eclipse Temurin JDK 17](https://adoptium.net/) 또는 원하는 JDK 17 배포판 설치
+- 설치 후 환경 변수 `JAVA_HOME`이 JDK 17 경로를 가리키는지 확인하세요.
+
+```bat
+java -version
+```
+
+출력 예시: `openjdk version "17.x.x"`
+
+### 2) Android SDK Platform 35 설치
+
+Android Studio의 **SDK Manager** (`Settings → Languages & Frameworks → Android SDK`) 에서:
+
+- **SDK Platforms** 탭 → **Android 15 (API 35)** 체크 후 Apply
+
+또는 커맨드라인 도구를 사용하는 경우:
+
+```bat
+sdkmanager "platforms;android-35"
+```
+
+### 3) 프로젝트 루트에서 빌드 실행
+
+프로젝트 루트 디렉터리에서 다음 명령어를 실행합니다:
+
+```bat
+.\gradlew.bat assembleDebug
+```
+
+빌드 성공 시 `app/build/outputs/apk/debug/` 경로에 APK 파일이 생성됩니다.
+
+---
+
 ## 프로젝트 시작하기
 
 ### 단계 1: 코드 받아오기
