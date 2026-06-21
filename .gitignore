@@ -19,3 +19,5 @@ captures/
 # OS files
 .DS_Store
 Thumbs.db
+
+.worktrees/
