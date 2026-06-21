@@ -64,6 +64,16 @@ sdkmanager "platforms;android-35"
 
 빌드 성공 시 `app/build/outputs/apk/debug/` 경로에 APK 파일이 생성됩니다.
 
+### 4) 서버 개발 시작
+
+```bat
+npm --prefix server install
+npm --prefix server test
+npm --prefix server start
+```
+
+기본 서버 포트는 `8080`이며, `PORT` 환경변수로 변경할 수 있습니다.
+
 ---
 
 ## 프로젝트 시작하기
