@@ -19,4 +19,9 @@ class BalanceUiLogicTest {
     fun angleOverFive_returnsDanger() {
         assertEquals("심하게 기울어짐", balanceStatusLabel(-6.0f))
     }
+
+    @Test
+    fun sensorConnectionText_withoutError_returnsConnected() {
+        assertEquals("센서 연결됨", sensorConnectionText(false))
+    }
 }

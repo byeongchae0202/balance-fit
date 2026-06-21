@@ -16,16 +16,25 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.balancefit.app.AppError
+import com.balancefit.app.sensor.AndroidSensorDataSource
 import kotlin.math.abs
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 fun appTitle(): String = "Balance Fit 대시보드"
 
@@ -47,12 +56,42 @@ fun guidanceMessage(angle: Float): String = when {
     else -> "왼쪽이 높습니다. 왼쪽을 조금 낮춰보세요."
 }
 
+fun sensorConnectionText(hasError: Boolean): String = if (hasError) "센서 오류" else "센서 연결됨"
+
+private fun formatTimestamp(timestampMillis: Long): String {
+    if (timestampMillis <= 0L) return "데이터 수신 대기 중"
+    val formatter = SimpleDateFormat("HH:mm:ss", Locale.KOREA)
+    return "최근 업데이트: ${formatter.format(Date(timestampMillis))}"
+}
+
 @Composable
 fun AppRoot() {
     var angle by remember { mutableFloatStateOf(0f) }
     var profile by remember { mutableStateOf("indoor") }
+    var sensorError by remember { mutableStateOf<AppError?>(null) }
+    var lastUpdatedMillis by remember { mutableLongStateOf(0L) }
+
+    val context = LocalContext.current
+    val isPreview = LocalInspectionMode.current
+    val sensorDataSource = remember(context) { AndroidSensorDataSource(context.applicationContext) }
     val status = balanceStatusLabel(angle)
     val statusColor = balanceStatusColor(angle)
+
+    if (!isPreview) {
+        DisposableEffect(sensorDataSource) {
+            sensorDataSource.startStreaming(
+                onData = { reading ->
+                    angle = reading.angle
+                    lastUpdatedMillis = reading.timestampMillis
+                    sensorError = null
+                },
+                onError = { error ->
+                    sensorError = error
+                }
+            )
+            onDispose { sensorDataSource.stopStreaming() }
+        }
+    }
 
     MaterialTheme {
         Surface(
@@ -73,18 +112,17 @@ fun AppRoot() {
                     Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                         Text("현재 각도: ${String.format("%.1f", angle)}°", style = MaterialTheme.typography.titleMedium)
                         Text("상태: $status", color = statusColor, style = MaterialTheme.typography.titleMedium)
+                        Text(sensorConnectionText(sensorError != null))
+                        Text(formatTimestamp(lastUpdatedMillis))
                     }
                 }
 
-                Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth()) {
-                    Button(onClick = { angle = (angle - 1f).coerceAtLeast(-12f) }, modifier = Modifier.weight(1f)) {
-                        Text("왼쪽 기울임")
-                    }
-                    Button(onClick = { angle = (angle + 1f).coerceAtMost(12f) }, modifier = Modifier.weight(1f)) {
-                        Text("오른쪽 기울임")
-                    }
-                    Button(onClick = { angle = 0f }, modifier = Modifier.weight(1f)) {
-                        Text("초기화")
+                if (sensorError != null) {
+                    Card(colors = CardDefaults.cardColors(containerColor = Color(0xFFFFEBEE))) {
+                        Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                            Text("센서 연결에 실패했습니다.", color = Color(0xFFB71C1C))
+                            Text("기기 센서 지원 상태를 확인해주세요.")
+                        }
                     }
                 }
 
