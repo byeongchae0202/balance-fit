@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.balancefit.app.AppErrorTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-06-21T01:43:33" hostname="BOOK-OBO3B1C890" time="0.004">
+  <properties/>
+  <testcase name="permissionDenied_hasCorrectCode" classname="com.balancefit.app.AppErrorTest" time="0.003"/>
+  <testcase name="sensorUnavailable_hasCorrectCode" classname="com.balancefit.app.AppErrorTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
