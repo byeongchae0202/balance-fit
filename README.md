@@ -38,6 +38,17 @@
 
 빌드 결과물은 `app/build/outputs/apk/debug/` 경로에 생성됩니다.
 
+### 백엔드 서버 실행
+
+로컬 API 서버는 아래 순서로 실행합니다.
+
+```bat
+npm --prefix server install
+npm --prefix server start
+```
+
+- Health Check: `http://localhost:8080/health`
+
 ---
 
 ## 문서
