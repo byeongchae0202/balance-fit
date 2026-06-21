@@ -6,7 +6,7 @@ import org.junit.Test
 class AppRootTest {
 
     @Test
-    fun appTitle_returnsBalanceFit() {
-        assertEquals("Balance Fit", appTitle())
+    fun appTitle_returnsDashboardTitle() {
+        assertEquals("Balance Fit 대시보드", appTitle())
     }
 }
